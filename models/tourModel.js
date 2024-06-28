@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const slugify = require("slugify");
-const User = require("./userModel");
+// const User = require("./userModel");
 
 // Define a schema for a tour
 const tourSchema = new mongoose.Schema(
@@ -106,7 +106,7 @@ const tourSchema = new mongoose.Schema(
         day: Number,
       },
     ],
-    guides: Array,
+    guides: [{ type: mongoose.Schema.ObjectId, ref: "User" }],
   },
   {
     toJSON: { virtuals: true },
