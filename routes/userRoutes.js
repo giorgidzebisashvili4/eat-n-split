@@ -29,3 +29,5 @@ router
   .delete(userController.deleteUser);
 
 module.exports = router;
+
+// Post /tour/231fa/reviews
