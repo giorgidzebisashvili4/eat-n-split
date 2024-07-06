@@ -12,18 +12,9 @@ router.patch('/resetPassword/:token', authController.resetPassword);
 // use protect middleware on all the routs below this line
 router.use(authController.protect);
 
-router.patch(
-  '/updateMyPassword',
+router.patch('/updateMyPassword', authController.updatePassword);
 
-  authController.updatePassword,
-);
-
-router.get(
-  '/me',
-
-  userController.getMe,
-  userController.getUser,
-);
+router.get('/me', userController.getMe, userController.getUser);
 
 router.patch('/updateMe', userController.updateMe);
 router.delete('/deleteMe', userController.deleteMe);
