@@ -19,20 +19,22 @@ const reviewSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
-    tour: [
+    tour:
+      // [
       {
         type: mongoose.Schema.ObjectId,
         ref: 'Tour',
         required: [true, 'Review must belong to a tour.'],
       },
-    ],
-    user: [
+    // ],
+    user:
+      // [
       {
         type: mongoose.Schema.ObjectId,
         ref: 'Users',
         required: [true, 'Review must belong to a tour.'],
       },
-    ],
+    // ],
   },
   {
     toJSON: { virtuals: true },
@@ -40,7 +42,7 @@ const reviewSchema = new mongoose.Schema(
   },
 );
 
-reviewSchema.index({ tour: 1, user: 1 }, { unique: true });
+reviewSchema.index({ tour: 1, user: 1 }, { unique: true, dropDups: true });
 
 reviewSchema.pre(/^find/, function (next) {
   // this.populate({
