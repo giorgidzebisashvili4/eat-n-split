@@ -37,3 +37,6 @@ const updateTourSlugs = async () => {
 };
 
 updateTourSlugs();
+
+// when you imported all tours slugify was commented out that. becose of that non of the tours get slug filed.
+// with this function it is fixed
