@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// const slugify = require('slugify');
+const slugify = require('slugify');
 // const User = require("./userModel");
 
 // Define a schema for a tour
@@ -132,11 +132,12 @@ tourSchema.virtual('reviews', {
   localField: '_id',
 });
 
-// //Document middleware: runs before .save() and .create()
-// tourSchema.pre('save', (next) => {
-//   this.slug = slugify(this.name, { lower: true });
-//   next();
-// });
+tourSchema.pre('save', function (next) {
+  if (this.isModified('name')) {
+    this.slug = slugify(this.name, { lower: true });
+  }
+  next();
+});
 
 // tourSchema.pre("save", async function (next) {
 //   const guidesPromises = this.guides.map(async (id) => await User.findById(id));
