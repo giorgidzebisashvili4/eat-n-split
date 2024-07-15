@@ -1,11 +1,11 @@
-console.log('Hello from the parsely console!');
 /* eslint-disable */
 
 import '@babel/polyfill';
-import { login } from './login.js';
+import { login, logout } from './login.js';
 
 // DOM
 const loginForm = document.querySelector('.form');
+const logOutBtn = document.querySelector('.nav__el--logout');
 
 // VALUES
 
@@ -25,4 +25,8 @@ if (loginForm) {
     console.log(email, password);
     login(email, password);
   });
+}
+
+if (logOutBtn) {
+  logOutBtn.addEventListener('click', logout);
 }
