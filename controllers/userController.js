@@ -42,8 +42,6 @@ exports.getMe = (req, res, next) => {
   next();
 };
 exports.updateMe = catchAsync(async (req, res, next) => {
-  console.log(req.file);
-  console.log(req.body);
   // 1) Crate error if user Posts password data
   if (req.body.password || req.body.passwordConfirm) {
     return next(
@@ -55,6 +53,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   }
   // 2)filtered out unwanted fields names that are not allowed to be updated
   const filterBody = filterObj(req.body, 'name', 'email');
+  if (req.file) filterBody.photo = req.file.filename;
   // 3)Update user document
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filterBody, {
     new: true,
