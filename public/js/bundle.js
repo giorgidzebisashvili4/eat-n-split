@@ -13248,7 +13248,7 @@ require("regenerator-runtime/runtime");
 var _login = require("./login.js");
 
 // DOM
-var loginForm = document.querySelector('.form');
+var loginForm = document.querySelector('.form--login');
 var logOutBtn = document.querySelector('.nav__el--logout'); // VALUES
 // document.querySelector('.form').addEventListener('submit', (e) => {
 //   e.preventDefault();
