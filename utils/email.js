@@ -14,10 +14,12 @@ module.exports = class Email {
     if (process.env.NODE_ENV === 'production') {
       // Use SendGrid or any other production email service
       return nodemailer.createTransport({
-        service: 'SendGrid',
+        host: 'smtp-relay.brevo.com',
+        port: 587,
+        secure: false, // true for 465, false for other ports
         auth: {
-          user: process.env.SENDGRID_USERNAME,
-          pass: process.env.SENDGRID_PASSWORD,
+          user: process.env.BREVO_USERNAME,
+          pass: process.env.BREVO_PASSWORD,
         },
       });
     }
@@ -68,5 +70,12 @@ module.exports = class Email {
 
   async sendWelcome() {
     await this.send('welcome', 'Welcome to the Natours Family!');
+  }
+
+  async sendPasswordReset() {
+    await this.send(
+      'passwordReset',
+      'Your password reset token (valid for only 10 minutes)',
+    );
   }
 };
