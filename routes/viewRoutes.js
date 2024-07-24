@@ -8,7 +8,7 @@ router.get('/', authController.isLoggedIn, viewsController.getOverview);
 router.get(
   '/tour/:slug',
   authController.isLoggedIn,
-  authController.protect,
+  // authController.protect,
   viewsController.getTours,
 );
 router.get('/login', authController.isLoggedIn, viewsController.logIn);
