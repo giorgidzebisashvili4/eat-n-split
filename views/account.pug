@@ -14,7 +14,7 @@ block content
             nav.user-view__menu
                 ul.side-nav
                     +navItem('/overview.html', 'Settings', 'settings', true)
-                    +navItem('/bookings.html', 'My bookings', 'calendar')
+                    +navItem('/my-tours', 'My bookings', 'calendar')
                     +navItem('/overview.html', 'My reviews', 'star')
                     +navItem('/overview.html', 'Billing', 'credit-card')
                 - if (user.role === 'admin')        
